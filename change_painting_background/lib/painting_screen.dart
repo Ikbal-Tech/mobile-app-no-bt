@@ -37,6 +37,8 @@ class _PaintingScreenState extends State<PaintingScreen> {
 
   List<String> thoughts = List<String>.empty(growable: true);
   List array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  List<String> income_results = ['26.99', '27.33', '45,68'];
+  List<double> income_results_double = [100.0, 0.0, 0.0];
   String secret_key = "key"; //Muhammed den alıcaz
 
   @override
@@ -112,7 +114,23 @@ class _PaintingScreenState extends State<PaintingScreen> {
                             ),
                           );
                         });
-                    await Future.delayed(new Duration(seconds: 2));
+
+                    String temp_income = await trial_post();
+                    income_results = temp_income.split(' ');
+                    for (int i = 0; i < income_results.length; i++) {
+                      income_results_double[i] =
+                          double.parse(income_results[i]);
+                    }
+                    double red_value = income_results_double[0] * 25.5;
+                    double green_value = income_results_double[1] * 25.5;
+                    double blue_value = income_results_double[2] * 25.5;
+
+                    setState(() {
+                      _fillColor = Color.fromARGB(255, red_value.toInt(),
+                          green_value.toInt(), blue_value.toInt());
+                    });
+
+                    //await Future.delayed(new Duration(seconds: 2));
                     Navigator.pop(context);
                     setState(() {
                       paintable = true;
@@ -137,20 +155,14 @@ class _PaintingScreenState extends State<PaintingScreen> {
     );
   }
 
-  void trial_post() async {
+  Future<String> trial_post() async {
     var body = jsonEncode({"name": "Ikbaltech"});
-
-    /*var response = await http.get(
-      Uri.parse(
-          'https://ikbal-tech-func-color-classifier.azurewebsites.net/api/anon-test?name=Ikbaltech'),
-    );*/
-
     var response = await http.post(
         Uri.parse(
             'https://ikbal-tech-func-color-classifier.azurewebsites.net/api/anon-test'),
         body: body);
-
     print(response.body);
+    return '50.0 25.00 25.00';
   }
 
   void send_data_to_azure() async {}

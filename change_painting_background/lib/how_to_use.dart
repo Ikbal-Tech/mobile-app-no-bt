@@ -14,41 +14,29 @@ class HowToUsePage extends StatelessWidget {
           SizedBox(
             width: 200.0,
             height: 100.0,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled))
-                    return Colors.amber;
-                  return null; // Defer to the widget's default.
-                }),
-                foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled))
-                    return Colors.blue;
-                  return null; // Defer to the widget's default.
-                }),
-              ),
-              onPressed: () {},
-              child: Text('GIF LINK'),
-            ),
           ),
           SizedBox(
             width: 50.0,
             height: 50.0,
           ),
-          Text(
-              'In This Application, you need to select a photo from library. There are a lot of templates.',
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  color: Colors.black.withOpacity(0.6),
-                  fontSize: 22.5)),
-          Text(
-              'After you select the template, every area will be selected by hand then in that selected area you are going to think a color and that color will be painted.',
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  color: Colors.black.withOpacity(0.6),
-                  fontSize: 22.5)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                'In this application, you need to select a photo from library. There are a lot of templates.',
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black.withOpacity(0.6),
+                    fontSize: 22.5)),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                'After you select the photo, press start to think button. If you think this is enough, then press the end thinking button. After color prediction has came, then touch the are you want to paint',
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black.withOpacity(0.6),
+                    fontSize: 22.5)),
+          ),
         ],
       ),
     );

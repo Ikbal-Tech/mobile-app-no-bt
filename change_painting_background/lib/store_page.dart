@@ -4,18 +4,7 @@ import 'package:flutter/material.dart';
 import 'painting_screen.dart';
 
 class StorePage extends StatelessWidget {
-  List a = [
-    "assets/kopek.png",
-    "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2014/09/14/18/04/dandelion-445228_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/08/09/21/54/yellowstone-national-park-1581879_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/07/11/15/43/pretty-woman-1509956_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/11/08/05/26/woman-1807533_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2013/11/28/10/03/autumn-219972_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/12/17/19/08/away-3024773_960_720.jpg",
-  ];
+  List a = ["assets/kopek.png", "assets/at.png", "assets/peng.png"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +21,13 @@ class StorePage extends StatelessWidget {
               color: Colors.black,
               child: Column(
                 children: <Widget>[
-                  Image.asset('assets/kopek.png'),
+                  Image.asset(a[index]),
                   SizedBox(
                     height: 10,
                   ),
                   new IconButton(
                     icon: new Icon(Icons.favorite),
-                    color: Colors.yellow,
+                    color: Colors.white,
                     iconSize: 40,
                     onPressed: () {
                       _navigateToSelectModalPage(context, a[index]);
